@@ -28,13 +28,13 @@ jobs:
       - name: Debug env
         run: echo "BASE_URL is set ${{ env.BASE_URL != '' }}"
         env:
-          BASE_URL: ${{ secrets.BASE_URL }}
+          BASE_URL: ${{ vars.BASE_URL }}
 
       - name: Run tests
         run: npm run test
         env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-          USERNAME: ${{ secrets.USERNAME }}
+          BASE_URL: ${{ vars.BASE_URL }}
+          USERNAME: ${{ vars.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
 
       - name: Generate report
