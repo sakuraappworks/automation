@@ -26,7 +26,7 @@ jobs:
         run: npx playwright install chromium
 
       - name: Debug env
-        run: echo "BASE_URL is set: ${{ env.BASE_URL != '' }}"
+        run: echo "BASE_URL is set ${{ env.BASE_URL != '' }}"
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
 
