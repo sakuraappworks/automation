@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 12 * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack Notification - Test Started
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"🚀 *Automation Test Started* 🚀\n*Repository:* ${{ github.repository }}\n*Branch:* ${{ github.ref }}\n*Triggered by:* ${{ github.actor }}\n*Commit:* ${{ github.sha }}"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run test
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+
+      - name: Generate report
+        if: always()
+        run: npm run report
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: report
+          path: reports/
+          retention-days: 3
+
+      - name: Send Slack Notification - Test Completed Successfully
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"✅ *PASSED* ✅"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Send Slack Notification - Test Failed
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"❌ *FAILED* ❌"}' ${{ secrets.SLACK_WEBHOOK_URL }}

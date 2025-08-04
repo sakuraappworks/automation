@@ -9,7 +9,9 @@
     "baseUrl": "./",
     "paths": {
       "@steps/*": ["tests/steps/*"],
-      "@supports/*": ["tests/supports/*"]
+      "@supports/*": ["tests/supports/*"],
+      "@elements/*": ["tests/supports/elements/*"],
+      "@util/*": ["tests/supports/util/*"]
     }
   },
   "include": ["tests/steps/**/*.ts", "tests/support/**/*.ts"]
