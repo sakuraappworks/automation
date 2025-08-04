@@ -11,8 +11,7 @@ const user = process.env.USERNAME as string;
 const pass = process.env.PASSWORD as string;
 
 Given('I have access to Shift Management', async () => {
-  console.log(url);
-  await page.goto('https://staging.appschedulo.com/');
+  await page.goto(url);
 });
 
 When('I perform Login', async () => {
