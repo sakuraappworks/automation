@@ -1,6 +1,7 @@
 import { Given, Then, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { page } from '@supports/hook';
+import { HOME_PAGE, LOGIN_PAGE } from '@elements/index';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -14,11 +15,11 @@ Given('I have access to Shift Management', async () => {
 });
 
 When('I perform Login', async () => {
-  await page.locator('//*[@id="employeeCode"]').first().fill(user);
-  await page.locator('//*[@id="password"]').first().fill(pass);
-  await page.locator('//*[@type="submit"]').click();
+  await page.locator(LOGIN_PAGE.TXT_EMAIL).first().fill(user);
+  await page.locator(LOGIN_PAGE.TXT_PASSWORD).first().fill(pass);
+  await page.locator(LOGIN_PAGE.TXT_SUBMIT).click();
 });
 
 Then('the Home page should display', async () => {
-  await expect(page.locator('//*[text()="HE"]')).toBeVisible();
+  await expect(page.locator(HOME_PAGE.ICON_USER)).toBeVisible();
 });

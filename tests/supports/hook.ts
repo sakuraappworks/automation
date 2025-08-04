@@ -7,14 +7,16 @@ let browser: Browser;
 setDefaultTimeout(60000);
 
 Before(async () => {
-  browser = await chromium.launch({ headless: false });
-  page = await browser.newPage();
+  browser = await chromium.launch({ headless: true });
+  page = await browser.newPage({
+    viewport: { width: 1920, height: 1080 },
+  });
 });
 
 After(async function (scenario) {
   if (scenario.result?.status === 'FAILED') {
     const screenshot = await page.screenshot({
-      path: `./screenshots/${scenario.pickle.name}.png`,
+      path: `./reports/screenshots/${scenario.pickle.name}.png`,
     });
     this.attach(screenshot, 'image/png');
   }
