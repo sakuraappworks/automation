@@ -29,12 +29,23 @@ jobs:
       - name: Install playwright browser
         run: npx playwright install chromium
 
+      - name: Set Japanese locale
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y language-pack-ja
+          sudo update-locale LANG=ja_JP.UTF-8
+        env:
+          LANG: ja_JP.UTF-8
+          LC_ALL: ja_JP.UTF-8
+
       - name: Run tests
         run: npm run test
         env:
           BASE_URL: ${{ vars.BASE_URL }}
           USERNAME: ${{ vars.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
+          LANG: ja_JP.UTF-8
+          LC_ALL: ja_JP.UTF-8
 
       - name: Generate report
         if: always()
