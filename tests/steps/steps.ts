@@ -1,7 +1,7 @@
 import { Given, Then, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { page } from '@supports/hook';
-import { HOME_PAGE, LOGIN_PAGE } from '@elements/index';
+import { DASHBOARD_PAGE, LOGIN_PAGE } from '@elements/index';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -21,5 +21,5 @@ When('I perform Login', async () => {
 });
 
 Then('the Home page should display', async () => {
-  await expect(page.locator(HOME_PAGE.ICON_USER)).toBeVisible();
+  await expect(page.locator(DASHBOARD_PAGE.BTN_SHIFT_APPROVAL)).toBeVisible();
 });
