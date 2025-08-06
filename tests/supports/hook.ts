@@ -10,6 +10,7 @@ Before(async () => {
   browser = await chromium.launch({ headless: true });
   page = await browser.newPage({
     viewport: { width: 1920, height: 1080 },
+    locale: 'ja-JP',
   });
 });
 
