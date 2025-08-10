@@ -17,7 +17,9 @@ Given('I have access to Shift Management', async () => {
 When('I perform Login', async () => {
   await page.locator(LOGIN_PAGE.TXT_EMAIL).first().fill(user);
   await page.locator(LOGIN_PAGE.TXT_PASSWORD).first().fill(pass);
-  await page.locator(LOGIN_PAGE.TXT_SUBMIT).click();
+  await page.locator(LOGIN_PAGE.BTN_SUBMIT).waitFor({ state: 'attached' });
+  await page.locator(LOGIN_PAGE.BTN_SUBMIT).waitFor({ state: 'visible' });
+  await page.locator(LOGIN_PAGE.BTN_SUBMIT).click({ timeout: 1000, force: true });
 });
 
 Then('the Home page should display', async () => {
