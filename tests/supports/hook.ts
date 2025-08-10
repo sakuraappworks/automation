@@ -1,5 +1,6 @@
-import { After, Before, setDefaultTimeout } from '@cucumber/cucumber';
+import { After, AfterAll, Before, setDefaultTimeout } from '@cucumber/cucumber';
 import { Browser, Page, chromium } from '@playwright/test';
+import { closePool, queryFromFile } from '@util/index';
 
 let page: Page;
 let browser: Browser;
@@ -23,6 +24,11 @@ After(async function (scenario) {
   }
   await page.close();
   await browser.close();
+});
+
+AfterAll(async () => {
+  await queryFromFile('tests/supports/sql/clean_up.sql');
+  await closePool();
 });
 
 export { page, browser };
