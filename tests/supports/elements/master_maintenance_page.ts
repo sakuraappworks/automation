@@ -66,4 +66,29 @@ export enum MASTER_MAINTENANCE_PAGE {
   TXT_DEPARTMENT_NAME = '//*[@placeholder="部門名"]',
   TXT_DEPARTMENT_INTRODUCTION = '//*[@placeholder="部門紹介"]',
   TXT_UPLOAD = '//*[@id="file-upload"]',
+
+  // #region Area
+  TAB_AREA = '//button[text()="エリア・ゾーン"]',
+  BTN_AREA = '//button[text()="エリア"]',
+  BTN_ZONE = '//button[text()="ゾーン"]',
+  BTN_ADD_ZONE = '//*[text()=" 新規作成"]',
+  TXT_ZONE_CODE = '//*[@name="code"]',
+  TXT_ZONE_NAME = '//*[@name="name"]',
+  TXT_CONTRACT_DISPLAY_NAME = '//*[@name="contract_name"]',
+  TXT_RANK = '//*[@name="rank"]',
+  CHECK_HIDDEN = '//*[@name="hidden"]',
+
+  // #region Authority
+  TAB_AUTHORITY = '//button[text()="権限"]',
+  TXT_AUDIENCE = '//*[@placeholder="社員名または社員コード"]',
+  BTN_ADD_PERMISSION = '//*[text()=" 新規作成"]',
+  TXT_GROUP_NAME = '//*[@id="groupName"]',
+  TXT_EMPLOYEE_LOOKUP = '//*[@placeholder="社員名か社員コードを入力"]',
+  BTN_RIGHT = '//*[contains(@class,"lucide-chevrons-right")]',
+  BTN_LEFT = '//*[contains(@class,"lucide-chevrons-left")]',
+  BTN_PROCESS = '//*[text()=" 権限設定に進む"]',
+
+  // #region Basic Ledger
+  TAB_BASIC_LEDGER = '//button[text()="基本台帳"]',
+  BTN_UPDATE = '//*[text()="更新する"]',
 }
