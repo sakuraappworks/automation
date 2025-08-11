@@ -18,3 +18,19 @@ Background:
     Scenario: Create a new company
         When I click on Create New Company
         Then the Create Company form should display
+
+    Scenario: Create a new zone
+        When I click on Create New Zone
+        Then the Create Zone form should display
+
+    Scenario: Create a new area
+        When I click on Create New Area
+        Then the Create Area form should display
+
+    Scenario: Create a new authority
+        When I click on Create New Authority
+        Then the Create Authority form should display
+
+    Scenario: Update basic ledger
+        When I click on Basic Ledger
+        Then the Basic Ledger page should display
