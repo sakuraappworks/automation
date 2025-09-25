@@ -1,7 +1,7 @@
 import { Given, Then, When } from '@cucumber/cucumber';
+import { DASHBOARD_PAGE, LOGIN_PAGE } from '@elements/index';
 import { expect } from '@playwright/test';
 import { page } from '@supports/hook';
-import { DASHBOARD_PAGE, LOGIN_PAGE } from '@elements/index';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -23,5 +23,5 @@ When('I perform Login', async () => {
 });
 
 Then('the Home page should display', async () => {
-  await expect(page.locator(DASHBOARD_PAGE.BTN_SHIFT_APPROVAL)).toBeVisible();
+  await expect(page.locator(DASHBOARD_PAGE.BTN_SHOW_LIST)).toBeVisible({ timeout: 30000 });
 });

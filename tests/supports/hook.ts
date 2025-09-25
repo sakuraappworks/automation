@@ -31,4 +31,4 @@ AfterAll(async () => {
   await closePool();
 });
 
-export { page, browser };
+export { browser, page };
