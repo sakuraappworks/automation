@@ -1,7 +1,7 @@
 import { Then, When } from '@cucumber/cucumber';
+import { DASHBOARD_PAGE, LEDGER_DETAIL_PAGE, MASTER_MAINTENANCE_PAGE } from '@elements/index';
 import { expect } from '@playwright/test';
 import { page } from '@supports/hook';
-import { DASHBOARD_PAGE, MASTER_MAINTENANCE_PAGE } from '@elements/index';
 
 When('I navigate to Master Maintenance', async () => {
   await page.locator(DASHBOARD_PAGE.MENU_MASTER).click();
@@ -68,9 +68,9 @@ Then('the Create Authority form should display', async () => {
 });
 
 When('I click on Basic Ledger', async () => {
-  await page.locator(MASTER_MAINTENANCE_PAGE.TAB_BASIC_LEDGER).click();
+  await page.locator(LEDGER_DETAIL_PAGE.TAB_BASIC_LEDGER).click();
 });
 
 Then('the Basic Ledger page should display', async () => {
-  await expect(page.locator(MASTER_MAINTENANCE_PAGE.BTN_UPDATE)).toBeVisible();
+  await expect(page.locator(LEDGER_DETAIL_PAGE.BTN_UPDATE)).toBeVisible();
 });
