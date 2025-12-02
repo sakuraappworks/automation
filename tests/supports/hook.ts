@@ -13,6 +13,8 @@ Before(async () => {
     viewport: { width: 1920, height: 1080 },
     locale: 'ja-JP',
   });
+  page.setDefaultTimeout(60000); // 60 seconds for actions
+  page.setDefaultNavigationTimeout(60000); // 60 seconds for navigation
 });
 
 After(async function (scenario) {
